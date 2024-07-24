@@ -16,7 +16,11 @@ const config: Config = {
       colors:{
         darkHomeBg:'#0f0f0f',
         darkText:"#d1d5db",
-        tubeRed:"#f00;"
+        tubeRed:"#f00",
+
+        // Light Theme
+        lightHomeBg:'#fff',
+        lightText:'#212121'
       }
     },
   },
