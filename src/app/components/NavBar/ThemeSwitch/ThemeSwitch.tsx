@@ -27,7 +27,6 @@ const ThemeSwitch = () => {
     );
   }
 
-  console.log(resolvedTheme)
   if (resolvedTheme === 'dark') {
     return <LightModeIcon onClick={() => setTheme('light')} />
   }

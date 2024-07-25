@@ -3,6 +3,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import NavbarMiddleSection from "./NavBarMiddleSection/NavbarMiddleSection";
 import ThemeSwitch from "./ThemeSwitch/ThemeSwitch";
+import VideoCallIcon from '@mui/icons-material/VideoCall';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 
 const NavBar = () => {
   return (
@@ -27,7 +31,13 @@ const NavBar = () => {
         <NavbarMiddleSection />
 
         {/* Right Side */}
-        <div className="flex items-center"><ThemeSwitch /></div>
+        <div className="flex items-center  ">
+          <VideoCallIcon className="mr-2"/>
+          <NotificationsIcon className="mx-2"/>
+          <AccountCircleIcon className="ml-2 text-[30px]"/>
+         
+          
+          </div>
       </div>
     </div>
   );
