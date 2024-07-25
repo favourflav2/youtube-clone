@@ -1,10 +1,9 @@
 import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import NavbarMiddleSection from "../NavBarMiddleSection/NavbarMiddleSection";
-import VideoCallIcon from "@mui/icons-material/VideoCall";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import NavBarRightSection from "./NavBarRightSection/NavBarRightSection";
+import NavbarMiddleSection from "./NavBarMiddleSection/NavbarMiddleSection";
+
 
 const DesktopNavBar = () => {
   return (
@@ -27,11 +26,7 @@ const DesktopNavBar = () => {
       <NavbarMiddleSection />
 
       {/* Right Side */}
-      <div className="flex items-center  ">
-        <VideoCallIcon className="mr-2" />
-        <NotificationsIcon className="mx-2" />
-        <AccountCircleIcon className="ml-2 text-[30px]" />
-      </div>
+      <NavBarRightSection />
     </div>
   );
 };

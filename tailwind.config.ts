@@ -17,6 +17,7 @@ const config: Config = {
         darkHomeBg:'#0f0f0f',
         darkText:"#d1d5db",
         tubeRed:"#f00",
+        darkGray:"#2d2d2d",
 
         // Light Theme
         lightHomeBg:'#fff',

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ThemeSwitch from "./components/NavBar/ThemeSwitch/ThemeSwitch";
+import ThemeSwitch from "./components/ThemeSwitch/ThemeSwitch";
 
 export default function Home() {
   return (

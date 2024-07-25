@@ -1,31 +1,30 @@
 "use client";
 import { assertIsNode } from "@/utils/assertTargetIsNode/assertTargetIsNode";
 import React from "react";
-import { twMerge } from "tailwind-merge";
-import SearchIcon from "@mui/icons-material/Search";
 import MicIcon from "@mui/icons-material/Mic";
-import NavBarSearchInput from "../NavBarSearchInput/NavBarSearchInput";
+import NavBarSearchInput from "../../NavBarSearchInput/NavBarSearchInput";
+
 
 
 const NavbarMiddleSection = () => {
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const [showSearchOnInput, setShowSearchOnInput] = React.useState(false);
+  
 
-  const handleClick = (e: MouseEvent) => {
-    assertIsNode(e.target);
-    if (inputRef.current && inputRef.current.contains(e.target)) {
-      setShowSearchOnInput(true);
-    } else {
-      setShowSearchOnInput(false);
-    }
-  };
+  // const handleClick = (e: MouseEvent) => {
+  //   assertIsNode(e.target);
+  //   if (inputRef.current && inputRef.current.contains(e.target)) {
+  //     setShowSearchOnInput(true);
+  //   } else {
+  //     setShowSearchOnInput(false);
+  //   }
+  // };
 
-  React.useEffect(() => {
-    document.addEventListener("click", handleClick, true);
-    return () => {
-      document.removeEventListener("click", handleClick, true);
-    };
-  });
+  // React.useEffect(() => {
+  //   document.addEventListener("click", handleClick, true);
+  //   return () => {
+  //     document.removeEventListener("click", handleClick, true);
+  //   };
+  // });
 
 
   return (
@@ -34,7 +33,7 @@ const NavbarMiddleSection = () => {
       <div className="flex items-center h-full w-full">
 
         {/* Input Div */}
-        <NavBarSearchInput showSearchIconInsideInput={showSearchOnInput} inputRef={inputRef} focusOnRender={false}/>
+        <NavBarSearchInput  focusOnRender={false}/>
 
         {/* Mic Icon */}
         <button className=" rounded-full bg-gray-300/30 dark:bg-[#343434c3] h-[40px] w-[45px] p-1 ml-[1rem]"><MicIcon className=""/></button>

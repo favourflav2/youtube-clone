@@ -1,16 +1,19 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import SearchIcon from "@mui/icons-material/Search";
+import useCloseOnOutsideClick from "@/app/hooks/closeOnOutsideClick/useCloseOnOutsideClick";
 
 type Props = {
-  showSearchIconInsideInput: boolean;
-  inputRef: React.RefObject<HTMLInputElement>;
   focusOnRender: boolean;
   focused?: boolean;
   setFocused?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const NavBarSearchInput = ({ showSearchIconInsideInput, inputRef, focusOnRender, focused, setFocused }: Props) => {
+const NavBarSearchInput = ({ focusOnRender, focused, setFocused }: Props) => {
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const {open:showSearchIconInsideInput} = useCloseOnOutsideClick({ref:inputRef})
+
   // On mobile devices, on render the input will be focused ... which will set the state to true
   // if the focus state || focus on render is true ... it will break the && operator and show the search bar in input
 
@@ -58,7 +61,7 @@ const NavBarSearchInput = ({ showSearchIconInsideInput, inputRef, focusOnRender,
       />
 
       {/* Right Search Bar */}
-      <div className=" rounded-r-full h-full flex justify-center items-center w-[4rem] dark:bg-[#343434c3] border-l dark:border-neutral-600  bg-gray-100">
+      <div className=" rounded-r-full h-full flex justify-center items-center w-[4rem] dark:bg-darkGray border-l dark:border-neutral-600  bg-gray-100">
         <button>
           <SearchIcon />
         </button>
