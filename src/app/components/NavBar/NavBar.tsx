@@ -2,10 +2,11 @@ import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import NavbarMiddleSection from "./NavBarMiddleSection/NavbarMiddleSection";
+import ThemeSwitch from "./ThemeSwitch/ThemeSwitch";
 
 const NavBar = () => {
   return (
-    <div className="h-[3.75rem] fixed top-0 left-0 bg-darkHomeBg text-darkText w-full z-10">
+    <div className="h-[3.75rem] fixed top-0 left-0  w-full z-10 dark:bg-darkHomeBg bg-lightHomeBg  dark:text-darkText text-lightText">
       {/* Desktop Content */}
       <div className="md:flex hidden justify-between items-center p-3 h-full">
         {/* Left Side */}
@@ -26,7 +27,7 @@ const NavBar = () => {
         <NavbarMiddleSection />
 
         {/* Right Side */}
-        <div className="flex items-center">Icons dont need as much space</div>
+        <div className="flex items-center"><ThemeSwitch /></div>
       </div>
     </div>
   );
