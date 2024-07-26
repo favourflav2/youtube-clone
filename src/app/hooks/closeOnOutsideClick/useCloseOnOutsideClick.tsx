@@ -4,33 +4,34 @@ import { assertIsNode } from "../../../utils/assertTargetIsNode/assertTargetIsNo
 import { useApplicationStore } from "@/app/store";
 
 type Props = {
-  ref:React.RefObject<HTMLDivElement | HTMLInputElement>
-}
+  ref: React.RefObject<HTMLDivElement | HTMLInputElement>;
+};
 
-const useCloseOnOutsideClick = ({ref}:Props) => {
+const useCloseOnOutsideClick = ({ ref }: Props) => {
   // Zustand Persisted State
-  const {setOpenProfilePicMenu, openProfilePicMenu} = useApplicationStore()
+  //const {setOpenProfilePicMenu, openProfilePicMenu} = useApplicationStore()
 
-  const handleClick = (e: MouseEvent) => {
-    assertIsNode(e.target);
-    if (ref.current && ref.current.contains(e.target)) {
-      setOpenProfilePicMenu(true);
-    } else {
-      setOpenProfilePicMenu(false);
-    }
-  };
+  const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
+    const handleClick = (e: MouseEvent | TouchEvent) => {
+      assertIsNode(e.target);
+      if (ref.current && !ref.current.contains(e.target)) {
+        console.log("You clicked outside");
+        setOpen(false);
+        //setOpenProfilePicMenu(false)
+      }
+    };
     document.addEventListener("click", handleClick, true);
     return () => {
       document.removeEventListener("click", handleClick, true);
     };
-  });
+  }, [setOpen, ref]);
 
-return {
-  setOpen:setOpenProfilePicMenu,
-  open:openProfilePicMenu
-}
+  return {
+    setOpen,
+    open,
+  };
 };
 
 export default useCloseOnOutsideClick;
