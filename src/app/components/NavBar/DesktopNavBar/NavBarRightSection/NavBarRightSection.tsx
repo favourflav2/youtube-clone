@@ -10,7 +10,7 @@ import { useApplicationStore } from "@/app/store";
 const NavBarRightSection = () => {
   // Handle Outside Click
   const menuRef = React.useRef<HTMLDivElement>(null);
-  const {setOpenProfilePicMenu:setOpen, openProfilePicMenu:open} = useApplicationStore()
+  const {setOpenProfilePicMenu:setOpen, openProfilePicMenu:open} = useApplicationStore(state => state)
   const fav = useCloseOnOutsideClick({ref:menuRef})
   // const { openProfilePicMenu:open, setOpenProfilePicMenu:setOpen } = useCloseOnOutsideClick({ ref: menuRef });
 

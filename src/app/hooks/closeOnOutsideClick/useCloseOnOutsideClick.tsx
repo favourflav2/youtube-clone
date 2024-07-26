@@ -22,7 +22,7 @@ const useCloseOnOutsideClick = ({ ref }: Props) => {
        const fav =  ref.current.contains(e.target)
        console.log(ref.current)
        console.log(e.composedPath().includes(ref.current))
-       // setOpenProfilePicMenu(false)
+        setOpenProfilePicMenu(false)
       }
     };
     document.addEventListener("click", handleClick, true);
