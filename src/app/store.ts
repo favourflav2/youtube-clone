@@ -4,7 +4,7 @@ import { immer } from "zustand/middleware/immer";
 
 type ApplicationState = {
   openProfilePicMenu: boolean;
-  setOpenProfilePicMenu: () => void;
+  setOpenProfilePicMenu: (action:boolean) => void;
 };
 
 type MyPersist = (config: StateCreator<ApplicationState>, options: PersistOptions<ApplicationState>) => StateCreator<ApplicationState>;
@@ -15,9 +15,9 @@ export const useApplicationStore = create<ApplicationState, [["zustand/devtools"
       (persist as MyPersist)(
         (set) => ({
           openProfilePicMenu: false,
-          setOpenProfilePicMenu: () => {
-            set((state) => ({
-              openProfilePicMenu: !state.openProfilePicMenu,
+          setOpenProfilePicMenu: (action:boolean) => {
+            set(() => ({
+              openProfilePicMenu: action,
             }));
           },
         }),

@@ -1,22 +1,24 @@
 "use client";
 import React from "react";
 import { assertIsNode } from "../../../utils/assertTargetIsNode/assertTargetIsNode";
+import { useApplicationStore } from "@/app/store";
 
 type Props = {
   ref:React.RefObject<HTMLDivElement | HTMLInputElement>
 }
 
 const useCloseOnOutsideClick = ({ref}:Props) => {
-  const [open, setOpen] = React.useState(false);
+  // Zustand Persisted State
+  const {openProfilePicMenu, setOpenProfilePicMenu} = useApplicationStore()
 
-  const openMenu = () => setOpen(true);
-  const closeMenu = () => setOpen(false);
+  const openMenu = () => setOpenProfilePicMenu(true);
+  const closeMenu = () => setOpenProfilePicMenu(false);
   const handleClick = (e: MouseEvent) => {
     assertIsNode(e.target);
     if (ref.current && ref.current.contains(e.target)) {
-      setOpen(true);
+      setOpenProfilePicMenu(true);
     } else {
-      setOpen(false);
+      setOpenProfilePicMenu(false);
     }
   };
 
@@ -28,8 +30,8 @@ const useCloseOnOutsideClick = ({ref}:Props) => {
   });
 
  return {
-  open,
-  setOpen,
+  open:openProfilePicMenu,
+  setOpen:setOpenProfilePicMenu,
   openMenu,
   closeMenu
  }
