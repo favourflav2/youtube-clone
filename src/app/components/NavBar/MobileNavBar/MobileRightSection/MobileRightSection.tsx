@@ -15,7 +15,7 @@ type Props = {
 const MobileRightSection = ({ setOpenSearchBar }: Props) => {
   // Handle Outside Click
   const menuRef = React.useRef<HTMLDivElement>(null);
-  const { open, openMenu } = useCloseOnOutsideClick({ ref: menuRef });
+  const { open, setOpen } = useCloseOnOutsideClick({ ref: menuRef });
 
   return (
     <div className="flex items-center gap-4">
@@ -23,7 +23,7 @@ const MobileRightSection = ({ setOpenSearchBar }: Props) => {
       <MicIcon className="min-[430px]:inline-block hidden" />
       <VideoCallIcon />
       <NotificationsIcon className="min-[430px]:inline-block hidden" />
-      <AccountCircleIcon className="text-[30px]" onClick={openMenu} />
+      <AccountCircleIcon className="text-[30px]" onClick={() => setOpen(true)} />
 
       <ProfilePicMenu open={open} menuRef={menuRef} type="Mobile"/>
     </div>

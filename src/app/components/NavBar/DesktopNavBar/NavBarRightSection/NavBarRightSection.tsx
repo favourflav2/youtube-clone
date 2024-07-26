@@ -9,13 +9,13 @@ import ProfilePicMenu from "../../ProfilePicMenu/ProfilePicMenu";
 const NavBarRightSection = () => {
   // Handle Outside Click
   const menuRef = React.useRef<HTMLDivElement>(null);
-  const { open, openMenu } = useCloseOnOutsideClick({ ref: menuRef });
+  const { open, setOpen } = useCloseOnOutsideClick({ ref: menuRef });
 
   return (
     <div className="flex items-center  relative gap-4">
       <VideoCallIcon />
       <NotificationsIcon />
-      <AccountCircleIcon className="text-[30px]" onClick={openMenu} />
+      <AccountCircleIcon className="text-[30px]" onClick={()=>setOpen(true)} />
 
       <ProfilePicMenu open={open} menuRef={menuRef} type="Desktop" />
     </div>

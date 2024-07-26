@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import SearchIcon from "@mui/icons-material/Search";
 import useCloseOnOutsideClick from "@/app/hooks/closeOnOutsideClick/useCloseOnOutsideClick";
+import { assertIsNode } from "@/utils/assertTargetIsNode/assertTargetIsNode";
 
 type Props = {
   focusOnRender: boolean;
@@ -10,9 +12,24 @@ type Props = {
 };
 
 const NavBarSearchInput = ({ focusOnRender, focused, setFocused }: Props) => {
+  const [showSearchIconInsideInput, setShowSearchIconInsideInput] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const {open:showSearchIconInsideInput} = useCloseOnOutsideClick({ref:inputRef})
+  const handleClick = (e: MouseEvent) => {
+    assertIsNode(e.target);
+    if (inputRef.current && inputRef.current.contains(e.target)) {
+      setShowSearchIconInsideInput(true);
+    } else {
+      setShowSearchIconInsideInput(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", handleClick, true);
+    return () => {
+      document.removeEventListener("click", handleClick, true);
+    };
+  });
 
   // On mobile devices, on render the input will be focused ... which will set the state to true
   // if the focus state || focus on render is true ... it will break the && operator and show the search bar in input

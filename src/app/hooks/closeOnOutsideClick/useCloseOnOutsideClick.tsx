@@ -9,10 +9,8 @@ type Props = {
 
 const useCloseOnOutsideClick = ({ref}:Props) => {
   // Zustand Persisted State
-  const {openProfilePicMenu, setOpenProfilePicMenu} = useApplicationStore()
+  const {setOpenProfilePicMenu, openProfilePicMenu} = useApplicationStore()
 
-  const openMenu = () => setOpenProfilePicMenu(true);
-  const closeMenu = () => setOpenProfilePicMenu(false);
   const handleClick = (e: MouseEvent) => {
     assertIsNode(e.target);
     if (ref.current && ref.current.contains(e.target)) {
@@ -29,12 +27,10 @@ const useCloseOnOutsideClick = ({ref}:Props) => {
     };
   });
 
- return {
-  open:openProfilePicMenu,
+return {
   setOpen:setOpenProfilePicMenu,
-  openMenu,
-  closeMenu
- }
+  open:openProfilePicMenu
+}
 };
 
 export default useCloseOnOutsideClick;
