@@ -10,8 +10,11 @@ import { useApplicationStore } from "@/app/store";
 const NavBarRightSection = () => {
   // Handle Outside Click
   const menuRef = React.useRef<HTMLDivElement>(null);
-  //const {setOpenProfilePicMenu, openProfilePicMenu} = useApplicationStore()
-  const { open, setOpen } = useCloseOnOutsideClick({ ref: menuRef });
+  const {setOpenProfilePicMenu:setOpen, openProfilePicMenu:open} = useApplicationStore()
+  const fav = useCloseOnOutsideClick({ref:menuRef})
+  // const { openProfilePicMenu:open, setOpenProfilePicMenu:setOpen } = useCloseOnOutsideClick({ ref: menuRef });
+
+  //console.log(open)
 
   return (
     <div className="flex items-center  relative gap-4">
