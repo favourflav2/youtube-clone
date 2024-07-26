@@ -7,26 +7,7 @@ import NavBarSearchInput from "../../NavBarSearchInput/NavBarSearchInput";
 
 
 const NavbarMiddleSection = () => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
   
-
-  // const handleClick = (e: MouseEvent) => {
-  //   assertIsNode(e.target);
-  //   if (inputRef.current && inputRef.current.contains(e.target)) {
-  //     setShowSearchOnInput(true);
-  //   } else {
-  //     setShowSearchOnInput(false);
-  //   }
-  // };
-
-  // React.useEffect(() => {
-  //   document.addEventListener("click", handleClick, true);
-  //   return () => {
-  //     document.removeEventListener("click", handleClick, true);
-  //   };
-  // });
-
-
   return (
     <div className="flex items-center justify-center grow lg:max-w-[600px] h-[3rem] lg:mx-0 mx-5  p-1">
       {/* Content */}
@@ -44,27 +25,5 @@ const NavbarMiddleSection = () => {
 
 export default NavbarMiddleSection;
 
-// <div className="w-full h-full flex items-center rounded-full border-gray-300 border-[1px] dark:border-neutral-700 dark:bg-neutral-900 bg-white ">
-//           {/* Left Search Bar */}
-//           <div className={twMerge("rounded-l-full bg-inherit  h-full flex justify-center items-center w-[3rem]", !showSearchOnInput && "hidden")}>
-//             <button>
-//               <SearchIcon />
-//             </button>
-//           </div>
 
-//           {/* Input */}
-//           <input
-//             type="text"
-//             className={twMerge("bg-inherit h-full w-full outline-none", !showSearchOnInput && "rounded-l-full indent-4 ")}
-//             placeholder="Search"
-//             ref={inputRef}
-//           />
-
-//           {/* Right Search Bar */}
-//           <div className=" rounded-r-full h-full flex justify-center items-center w-[4rem] dark:bg-[#343434c3] border-l dark:border-neutral-600  bg-gray-100">
-//             <button>
-//               <SearchIcon />
-//             </button>
-//           </div>
-//         </div>
 

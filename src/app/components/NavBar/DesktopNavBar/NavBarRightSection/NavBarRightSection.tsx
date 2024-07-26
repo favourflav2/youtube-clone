@@ -6,11 +6,6 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import useCloseOnOutsideClick from "@/app/hooks/closeOnOutsideClick/useCloseOnOutsideClick";
 import ProfilePicMenu from "../../ProfilePicMenu/ProfilePicMenu";
 
-
-
-
-
-
 const NavBarRightSection = () => {
   // Handle Outside Click
   const menuRef = React.useRef<HTMLDivElement>(null);
@@ -18,11 +13,11 @@ const NavBarRightSection = () => {
 
   return (
     <div className="flex items-center  relative gap-4">
-      <VideoCallIcon  />
-      <NotificationsIcon  />
+      <VideoCallIcon />
+      <NotificationsIcon />
       <AccountCircleIcon className="text-[30px]" onClick={openMenu} />
 
-      <ProfilePicMenu open={open} menuRef={menuRef} type='Desktop'/>
+      <ProfilePicMenu open={open} menuRef={menuRef} type="Desktop" />
     </div>
   );
 };
