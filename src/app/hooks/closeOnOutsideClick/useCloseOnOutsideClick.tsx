@@ -7,18 +7,24 @@ type Props = {
   ref: React.RefObject<HTMLDivElement | HTMLInputElement>;
 };
 
-const useCloseOnOutsideClick = ({ ref }: Props) => {
+const useCloseOnOutsideClick = ({ ref}: Props) => {
   // Zustand Persisted State
   //const {setOpenProfilePicMenu, openProfilePicMenu} = useApplicationStore()
 
-  const [open, setOpen] = React.useState(false);
+  const openOrClose = React.useRef<boolean>(false)
+  const [openUseRefStateSetter, setOpenUseRefStateSetter] = React.useState(false)
+
+
+  
 
   React.useEffect(() => {
     const handleClick = (e: MouseEvent | TouchEvent) => {
       assertIsNode(e.target);
       if (ref.current && !ref.current.contains(e.target)) {
         console.log("You clicked outside");
-        setOpen(false);
+        openOrClose.current = false
+        setOpenUseRefStateSetter(openOrClose.current)
+
         //setOpenProfilePicMenu(false)
       }
     };
@@ -26,11 +32,13 @@ const useCloseOnOutsideClick = ({ ref }: Props) => {
     return () => {
       document.removeEventListener("click", handleClick, true);
     };
-  }, [setOpen, ref]);
+  }, [ref,setOpenUseRefStateSetter]);
 
   return {
-    setOpen,
-    open,
+    openOrClose,
+    setOpenUseRefStateSetter,
+    openUseRefStateSetter
+   
   };
 };
 

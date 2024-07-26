@@ -17,8 +17,14 @@ type Props = {
 const MobileRightSection = ({ setOpenSearchBar }: Props) => {
   // Handle Outside Click
   const menuRef = React.useRef<HTMLDivElement>(null);
-  //const {setOpenProfilePicMenu,openProfilePicMenu} = useApplicationStore()
-  const {open, setOpen} = useCloseOnOutsideClick({ref:menuRef})
+  const { openOrClose,setOpenUseRefStateSetter,openUseRefStateSetter } = useCloseOnOutsideClick({ ref: menuRef});
+  
+  // I can only read and write from useRef current from event handlers or effects instead.
+  //* Since useRef persists my state ... when I change my useRef I just set my state to the persisted useRef
+  const setOpen = () => {
+    openOrClose.current = true
+    setOpenUseRefStateSetter(openOrClose.current)
+  }
 
   return (
     <div className="flex items-center gap-4">
@@ -26,9 +32,9 @@ const MobileRightSection = ({ setOpenSearchBar }: Props) => {
       <MicIcon className="min-[430px]:inline-block hidden" />
       <VideoCallIcon />
       <NotificationsIcon className="min-[430px]:inline-block hidden" />
-      <AccountCircleIcon className="text-[30px]" onClick={() => setOpen(true)} />
+      <AccountCircleIcon className="text-[30px]" onClick={setOpen} />
 
-      <ProfilePicMenu open={open} menuRef={menuRef} type="Mobile" />
+      <ProfilePicMenu open={openUseRefStateSetter} menuRef={menuRef} type="Mobile" />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import NavBarSearchInput from "../NavBarSearchInput/NavBarSearchInput";
 import MobileRightSection from "./MobileRightSection/MobileRightSection";
 
+
 const MobileNavBar = () => {
   const [openSearchBar, setOpenSearchBar] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
