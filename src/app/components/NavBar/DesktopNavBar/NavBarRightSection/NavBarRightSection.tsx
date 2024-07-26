@@ -20,6 +20,11 @@ const NavBarRightSection = () => {
     setOpenUseRefStateSetter(openOrClose.current)
   }
 
+  const setClose = () => {
+    openOrClose.current = false
+    setOpenUseRefStateSetter(openOrClose.current)
+  }
+
   
 
   return (
@@ -28,7 +33,7 @@ const NavBarRightSection = () => {
       <NotificationsIcon />
       <AccountCircleIcon className="text-[30px]"  onClick={setOpen}/>
 
-      <ProfilePicMenu open={openUseRefStateSetter} menuRef={menuRef} type="Desktop" />
+      <ProfilePicMenu open={openUseRefStateSetter} menuRef={menuRef} type="Desktop" setClose={setClose}/>
     </div>
   );
 };

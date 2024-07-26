@@ -3,9 +3,25 @@ import ThemeSwitch from "./components/ThemeSwitch/ThemeSwitch";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className=" dark:bg-darkHomeBg dark:text-darkText bg-lightHomeBg text-lightText min-h-screen  pt-[3.75rem]">
+
+      {/* Content */}
+      <div className="grid grid-cols-[20%_1fr] gap-4">
+
+        {/* Left Side */}
+        <div>
+
+        </div>
+
+        {/* Right Side */}
+        <div>
+          
+        </div>
+
+      </div>
       <ThemeSwitch />
-      <p>Next Line of action is working on left side drawer witht the three lines icon</p>
+      kjhkj
+   
     </main>
   );
 }

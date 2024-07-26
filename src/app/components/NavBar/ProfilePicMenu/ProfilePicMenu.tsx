@@ -8,9 +8,10 @@ type Props = {
   open: boolean;
   menuRef: React.RefObject<HTMLDivElement>;
   type: "Mobile" | "Desktop";
+  setClose: () => void
 };
 
-const ProfilePicMenu = ({ open, menuRef, type }: Props) => {
+const ProfilePicMenu = ({ open, menuRef, type, setClose }: Props) => {
   return (
     <>
       {open && (
@@ -40,7 +41,7 @@ const ProfilePicMenu = ({ open, menuRef, type }: Props) => {
             {/* Account Section */}
             <div className="flex flex-col">
               {accountArray.map((item) => (
-                <ProfilePicMenuCard item={item} key={item.text} />
+                <ProfilePicMenuCard item={item} key={item.text} setClose={setClose}/>
               ))}
             </div>
 
@@ -50,14 +51,14 @@ const ProfilePicMenu = ({ open, menuRef, type }: Props) => {
             {/* Studio & Memebership */}
             <div className="flex flex-col">
               {studioAndMembershipArray.map((item) => (
-                <ProfilePicMenuCard item={item} key={item.text} />
+                <ProfilePicMenuCard item={item} key={item.text} setClose={setClose} />
               ))}
             </div>
 
             {/* Data in youtube */}
             <div className="flex flex-col">
               {dataInYoutubeArray.map((item) => (
-                <ProfilePicMenuCard item={item} key={item.text} />
+                <ProfilePicMenuCard item={item} key={item.text} setClose={setClose} />
               ))}
             </div>
 
@@ -67,7 +68,7 @@ const ProfilePicMenu = ({ open, menuRef, type }: Props) => {
             {/* Settings */}
             <div className="flex flex-col">
               {settings.map((item) => (
-                <ProfilePicMenuCard item={item} key={item.text} />
+                <ProfilePicMenuCard item={item} key={item.text} setClose={setClose} />
               ))}
             </div>
 
@@ -77,7 +78,7 @@ const ProfilePicMenu = ({ open, menuRef, type }: Props) => {
             {/* Help and feedback */}
             <div className="flex flex-col">
               {helpAndFeedback.map((item) => (
-                <ProfilePicMenuCard item={item} key={item.text} />
+                <ProfilePicMenuCard item={item} key={item.text} setClose={setClose} />
               ))}
             </div>
           </div>

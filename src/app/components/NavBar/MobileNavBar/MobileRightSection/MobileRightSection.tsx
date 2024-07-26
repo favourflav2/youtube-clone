@@ -26,6 +26,11 @@ const MobileRightSection = ({ setOpenSearchBar }: Props) => {
     setOpenUseRefStateSetter(openOrClose.current)
   }
 
+  const setClose = () => {
+    openOrClose.current = false
+    setOpenUseRefStateSetter(openOrClose.current)
+  }
+
   return (
     <div className="flex items-center gap-4">
       <SearchIcon onClick={() => setOpenSearchBar(true)} />
@@ -34,7 +39,7 @@ const MobileRightSection = ({ setOpenSearchBar }: Props) => {
       <NotificationsIcon className="min-[430px]:inline-block hidden" />
       <AccountCircleIcon className="text-[30px]" onClick={setOpen} />
 
-      <ProfilePicMenu open={openUseRefStateSetter} menuRef={menuRef} type="Mobile" />
+      <ProfilePicMenu open={openUseRefStateSetter} menuRef={menuRef} type="Mobile" setClose={setClose}/>
     </div>
   );
 };
