@@ -2,11 +2,13 @@ import { create, StateCreator } from "zustand";
 import { persist, createJSONStorage, PersistOptions, devtools } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
-export type  TypeOfMoviesArray = Array<"Now Playing" | "Popular" | "Top Rated" | "Upcoming">
+export type TypeOfMoviesList = "Now Playing" | "Popular" | "Top Rated" | "Upcoming"
+export type  TypeOfMoviesArray = Array<TypeOfMoviesList>
+
 
 type ApplicationState = {
-  typeOfMovies: "Now Playing" | "Popular" | "Top Rated" | "Upcoming";
-  setTypeOfMovies: (type: "Now Playing" | "Popular" | "Top Rated" | "Upcoming") => void
+  typeOfMovies: TypeOfMoviesList;
+  setTypeOfMovies: (type: TypeOfMoviesList) => void
 };
 
 // Skip Hydration is needed becasue with nextjs we are server rendering ... when we server render we do not have access to the local storage
@@ -19,7 +21,8 @@ export const useApplicationStore = create<ApplicationState, [["zustand/devtools"
       persist(
         (set) => ({
           typeOfMovies:"Now Playing",
-          setTypeOfMovies: (type: "Now Playing" | "Popular" | "Top Rated" | "Upcoming") => {
+          setTypeOfMovies: (type: TypeOfMoviesList) => {
+            //console.log(type,"persit state")
             set(() => ({
               typeOfMovies: type
             }))
@@ -28,7 +31,7 @@ export const useApplicationStore = create<ApplicationState, [["zustand/devtools"
         {
           name: "applicationState",
           storage: createJSONStorage(() => localStorage),
-          skipHydration: true
+          skipHydration: true,
         }
       )
     )

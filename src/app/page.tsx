@@ -1,8 +1,11 @@
 import Image from "next/image";
 import ThemeSwitch from "./components/ThemeSwitch/ThemeSwitch";
 import ReactSlider from "./components/ReactSlider/ReactSlider";
+import { TypeOfMoviesList } from "./store";
 
-export default function Home() {
+export default function Home({searchParams}:{searchParams: {id:TypeOfMoviesList | undefined}}) {
+
+  console.log(searchParams.id)
   return (
     <main className=" dark:bg-darkHomeBg dark:text-darkText bg-lightHomeBg text-lightText min-h-screen  pt-[3.75rem]">
       {/* Content */}
