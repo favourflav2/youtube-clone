@@ -8,6 +8,7 @@ import { twMerge } from "tailwind-merge";
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { ParamsSchema } from "@/app/schemas/TypeOfMoviesSchema";
 
 const arrayOfTypes: TypeOfMoviesArray = ["Now Playing", "Popular", "Top Rated", "Upcoming"];
 const interval = 2;
@@ -21,10 +22,17 @@ const ReactSlider = () => {
 
   const [index, setIndex] = React.useState(0);
 
-  function typeOfMovies(text: string) {
+  function typeOfMovies(text: string | undefined) {
     if (!text) return "Now Playing";
 
-    return arrayOfTypes.includes(text as TypeOfMoviesList) ? text : "Now Playing";
+    const zodValidatingUrl = ParamsSchema.safeParse({ movies: text });
+
+    if (!zodValidatingUrl.success) {
+      alert("The url path is ?movies=<Type Of Movies>");
+      return "Now Playing";
+    }
+
+    return zodValidatingUrl.data.movies;
   }
 
   const onBack = () => {
@@ -53,6 +61,8 @@ const ReactSlider = () => {
     const slicedArrayOfTypes = arrayOfTypes.slice(index, index + 2);
     return slicedArrayOfTypes;
   };
+
+
 
   return (
     <div className="flex items-center relative">
