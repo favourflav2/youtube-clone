@@ -43,23 +43,11 @@ const ReactSlider = () => {
     });
   };
 
-  const createQueryString = React.useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams]
-  );
-
   const handleClick = (item: TypeOfMoviesList) => {
     const setTypeOfMovies = new URLSearchParams(searchParams.toString());
     setTypeOfMovies.set("movies", item);
     router.push(`${pathname}?${setTypeOfMovies.toString()}`);
-  
   };
-
 
   const myOwnSlider = () => {
     const slicedArrayOfTypes = arrayOfTypes.slice(index, index + 2);
