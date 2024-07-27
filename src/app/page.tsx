@@ -6,16 +6,16 @@ export default function Home() {
     <main className=" dark:bg-darkHomeBg dark:text-darkText bg-lightHomeBg text-lightText min-h-screen  pt-[3.75rem]">
 
       {/* Content */}
-      <div className="grid grid-cols-[20%_1fr] gap-4">
+      <div className="grid lg:grid-cols-[10%_1fr] grid-cols-1 gap-2">
 
         {/* Left Side */}
-        <div>
-
+        <div className="bg-red-500 w-full h-[500px] lg:block hidden">
+left
         </div>
 
         {/* Right Side */}
-        <div>
-          
+        <div className="w-full bg-purple-500 h-[500px]">
+          right
         </div>
 
       </div>
