@@ -22,6 +22,9 @@ const config: Config = {
         // Light Theme
         lightHomeBg:'#fff',
         lightText:'#212121'
+      },
+      screens:{
+        superSmall: '591px'
       }
     },
   },

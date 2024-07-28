@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NavBar from "./components/NavBar/NavBar";
 import ThemesProvider from "./providers/ThemesProvider/ThemesProvider";
+import ReactQueryProvider from "@/utils/ReactQueryProvider/ReactQueryProvider";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"],
@@ -29,8 +30,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={roboto.className}>
         <ThemesProvider>
-          <NavBar />
-          {children}
+          <ReactQueryProvider>
+            <NavBar />
+            {children}
+          </ReactQueryProvider>
         </ThemesProvider>
       </body>
     </html>

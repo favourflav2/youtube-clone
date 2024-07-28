@@ -2,10 +2,10 @@ import Image from "next/image";
 import ThemeSwitch from "./components/ThemeSwitch/ThemeSwitch";
 import ReactSlider from "./components/ReactSlider/ReactSlider";
 import { TypeOfMoviesList } from "./store";
+import Movies from "./components/Movies/Movies";
 
-export default function Home({searchParams}:{searchParams: {id:TypeOfMoviesList | undefined}}) {
-
-  console.log(searchParams.id)
+export default function Home({ searchParams }: { searchParams: { id: TypeOfMoviesList | undefined } }) {
+  console.log(searchParams.id);
   return (
     <main className=" dark:bg-darkHomeBg dark:text-darkText bg-lightHomeBg text-lightText min-h-screen  pt-[3.75rem]">
       {/* Content */}
@@ -14,12 +14,14 @@ export default function Home({searchParams}:{searchParams: {id:TypeOfMoviesList 
         <div className="bg-red-500  h-[500px] lg:block hidden">left</div>
 
         {/* Right Side */}
-        <div className="  h-[500px]">
+        <div className="">
           {/* Content */}
           <div className=" flex flex-col">
-            <ReactSlider />
-             
             
+            <ReactSlider />
+           
+
+            <Movies />
           </div>
         </div>
       </div>
