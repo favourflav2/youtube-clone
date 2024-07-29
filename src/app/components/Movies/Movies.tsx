@@ -42,7 +42,7 @@ const Movies = () => {
   };
 
   if (error) {
-    return <div className="flex items-center justify-center h-full bg-green-500">There was an error getting the data</div>;
+    return <div className="flex items-center justify-center h-full ">There was an error getting the data</div>;
   }
 
   return (

@@ -13,13 +13,17 @@ export const useGetMovies = ({ typeOfMovies, page }: Props) => {
     queryKey: ["getMovies", page, typeOfMovies],
     queryFn: async () => {
       const numPage: number = typeof page === "string" ? parseFloat(page) : page;
+    
       const data = await ServerSideFetch(typeOfMovies,numPage)
+
+     
 
       // client side validation
       const zodValidatingData = movieDataSchema.safeParse(data);
 
       if (!zodValidatingData.success) {
         const errorMessageArray = zodValidatingData.error.issues;
+        console.log(zodValidatingData)
         console.error(errorMessageArray);
         throw new Error("Oh no! ... the data the came from api does not match schema");
       }
