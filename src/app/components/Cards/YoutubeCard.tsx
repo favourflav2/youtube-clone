@@ -19,7 +19,7 @@ const YoutubeCard = ({ item }: Props) => {
   };
   return (
     <div className="flex flex-col  gap-2 pb-1">
-      <div className="xl:h-[18.75rem] lg:h-[15.625rem] 2xl:h-[21.875rem] min-[440px]:h-[17.813rem] h-[300px]  rounded-lg">
+      <div className="xl:h-[18.75rem] lg:h-[15.625rem] 2xl:h-[21.875rem] min-[440px]:h-[17.813rem] h-[18.75rem] rounded-lg">
         <Image
           src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
           alt={item.id.toString()}
@@ -34,7 +34,7 @@ const YoutubeCard = ({ item }: Props) => {
         {/* Logo and Title */}
         <div className="flex items-center gap-2">
           <div className="h-[35px] w-[35px] relative rounded-full">
-            <Image src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`} fill className=" object-fill rounded-full" alt="logo" />
+            <Image src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`} fill sizes="35px" className=" object-fill rounded-full" alt="logo" />
           </div>
           <h1 className="text-[14px] flex flex-wrap">{item.title}</h1>
         </div>

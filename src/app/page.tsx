@@ -7,13 +7,13 @@ import HomeIcon from "@mui/icons-material/Home";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import VideoSettingsIcon from "@mui/icons-material/VideoSettings";
+import { Suspense } from "react";
 
-export default function Home({ searchParams }: { searchParams: { id: TypeOfMoviesList | undefined } }) {
-  console.log(searchParams.id);
+export default function Home() {
   return (
     <main className=" dark:bg-darkHomeBg dark:text-darkText bg-lightHomeBg text-lightText min-h-screen  pt-[3.75rem]">
       {/* Content */}
-      <div className="grid lg:grid-cols-[6%_1fr] grid-cols-1 gap-1 pt-4">
+      <div className="grid lg:grid-cols-[7.8%_1fr] grid-cols-1 gap-1 pt-4">
         {/* Left Side */}
         <div className="lg:flex flex-col p-3 hidden gap-6">
           {/* Home */}
@@ -24,24 +24,24 @@ export default function Home({ searchParams }: { searchParams: { id: TypeOfMovie
             <h3 className="text-[11px]">Home</h3>
           </div>
 
-           {/* Shorts */}
-           <div className="flex flex-col items-center justify-center gap-1">
+          {/* Shorts */}
+          <div className="flex flex-col items-center justify-center gap-1">
             <button>
               <VideocamIcon />
             </button>
             <h3 className="text-[11px]">Shorts</h3>
           </div>
 
-           {/* Subscriptions */}
-           <div className="flex flex-col items-center justify-center gap-1">
+          {/* Subscriptions */}
+          <div className="flex flex-col items-center justify-center gap-1">
             <button>
               <SubscriptionsIcon />
             </button>
             <h3 className="text-[11px]">Subscriptions</h3>
           </div>
 
-           {/* You */}
-           <div className="flex flex-col items-center justify-center gap-1">
+          {/* You */}
+          <div className="flex flex-col items-center justify-center gap-1">
             <button>
               <VideoSettingsIcon />
             </button>
@@ -53,14 +53,17 @@ export default function Home({ searchParams }: { searchParams: { id: TypeOfMovie
         <div className="">
           {/* Content */}
           <div className=" flex flex-col">
-            <ReactSlider />
+            <Suspense>
+              <ReactSlider />
+            </Suspense>
 
-            <Movies />
+            <Suspense>
+              <Movies />
+            </Suspense>
           </div>
         </div>
       </div>
       <ThemeSwitch />
-    
     </main>
   );
 }

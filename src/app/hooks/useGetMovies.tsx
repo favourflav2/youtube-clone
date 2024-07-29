@@ -9,8 +9,8 @@ type Props = {
 };
 
 export const useGetMovies = ({ typeOfMovies, page }: Props) => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["getMovies"],
+  const { data, isLoading, error, isFetching } = useQuery({
+    queryKey: ["getMovies", page, typeOfMovies],
     queryFn: async () => {
       const numPage: number = typeof page === "string" ? parseFloat(page) : page;
       const data = await ServerSideFetch(typeOfMovies,numPage)
@@ -38,5 +38,6 @@ export const useGetMovies = ({ typeOfMovies, page }: Props) => {
     data,
     isLoading,
     error,
+    isFetching
   };
 };

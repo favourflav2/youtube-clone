@@ -54,15 +54,24 @@ const ReactSlider = () => {
   const handleClick = (item: TypeOfMoviesList) => {
     const setTypeOfMovies = new URLSearchParams(searchParams.toString());
     setTypeOfMovies.set("movies", item);
+    setTypeOfMovies.set("page", "1");
     router.push(`${pathname}?${setTypeOfMovies.toString()}`);
+    setIndex(0)
   };
 
   const myOwnSlider = () => {
-    const slicedArrayOfTypes = arrayOfTypes.slice(index, index + 2);
+    // Im making sure that the selected movie type will always be at index 0
+    const findSelectedMovieTypeIndex = arrayOfTypes.findIndex((item) => item === getStateFromQueryParams);
+    const arrayTypesCopy = arrayOfTypes.slice();
+
+    // unshift adds element to begining of array ... we get the index of the item and remove it ... then add it at the begining
+    const newArrayOfTypes = arrayTypesCopy.unshift(arrayTypesCopy.splice(findSelectedMovieTypeIndex, 1)[0]);
+
+    const slicedArrayOfTypes = arrayTypesCopy.slice(index, index + 2);
     return slicedArrayOfTypes;
   };
 
-
+  
 
   return (
     <div className="flex items-center relative">
